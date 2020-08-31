@@ -16,6 +16,7 @@
         'views/video_store_menu.xml',
         # Declaración de vistas
         'views/pelicula_views.xml',
+        'views/actor_views.xml',
     ],
     'installable': True,
 }
