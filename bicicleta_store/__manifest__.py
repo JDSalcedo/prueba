@@ -13,6 +13,7 @@
         # Vistas
         'views/bicicleta_store_menus.xml',
         'views/cliente_views.xml',
+        'views/comprobante_pago_views.xml',
     ],
     'installable': True,
 }
