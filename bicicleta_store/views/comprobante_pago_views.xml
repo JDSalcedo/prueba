@@ -24,19 +24,21 @@
             <form>
                 <header>
                     <button name="action_set_confirm" type="object" string="Confirmar" class="btn btn-primary"
-                            attrs="{'invisible': [('state', '=', 'confirm')]}"/>
+                            attrs="{'invisible': [('state', '!=', 'budget')]}"/>
+                    <button name="action_set_payment" type="object" string="Realizar Pago"
+                            attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" readonly="1"/>
                             <field name="cliente_id"/>
                             <field name="vendedor_id"/>
                         </group>
                         <group>
                             <field name="fecha_emision"/>
-                            <field name="termino_pago"/>
+                            <field name="termino_pago_id"/>
                             <field name="fecha_vencimiento"/>
                             <field name="tipo"/>
                             <field name="moneda"/>
@@ -59,10 +61,9 @@
                             </field>
                         </page>
                         <page string="Pagos">
-                            <field name="pago_ids"
-                                   attrs="{'readonly': [('state', '=', 'budget')]}"
-                                   context="{'default_comprobante_id': id}">
-                                <tree editable="top">
+                            <field name="pago_ids" readonly="1"
+                                   attrs="{'readonly': [('state', '=', 'budget')]}">
+                                <tree>
                                     <field name="comprobante_id" invisible="1"/>
                                     <field name="fecha_pago"/>
                                     <field name="monto"/>
@@ -91,4 +92,49 @@
     </record>
 
     <menuitem id="comprobantepago_cliente_menu_action" action="comprobantepago_cliente_action" sequence="10" parent="comprobante_pago_menu"/>
+
+    <record id="bicicletastore_comprobantepago_historico_view_form" model="ir.ui.view">
+        <field name="name">bicicletastore.comprobantepago.historico.view.form</field>
+        <field name="model">bicicletastore.comprobantepago.historico</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="comprobante_id"/>
+                            <field name="fecha_pago"/>
+                        </group>
+                        <group>
+                            <field name="monto"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="bicicletastore_comprobantepago_historico_view_form_wizard" model="ir.ui.view">
+        <field name="name">bicicletastore.comprobantepago.historico.view.form.wizard</field>
+        <field name="model">bicicletastore.comprobantepago.historico</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="comprobante_id" readonly="1"/>
+                            <field name="monto"/>
+                        </group>
+                        <group>
+                            <field name="fecha_pago"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_guardar" type="object" class="btn btn-primary" string="Mi guardar"/>
+                    <button string="Descartar" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 </odoo>

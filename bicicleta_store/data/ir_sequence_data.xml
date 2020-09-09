@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="comprobante_pago_seq" model="ir.sequence">
+        <field name="name">Secuencia de Comprobante pago</field>
+        <field name="code">comprobantepago.cliente</field>
+        <field name="prefix">CPE-</field>
+        <field name="padding">8</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

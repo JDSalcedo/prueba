@@ -8,6 +8,8 @@
     'website': 'https://www.vendobicicletas.com',
     'depends' : ['base'],
     'data': [
+        # Data
+        'data/ir_sequence_data.xml',
         # Archivo de reglas de acceso
         'security/ir.model.access.csv',
         # Vistas
