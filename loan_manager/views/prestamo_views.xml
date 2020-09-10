@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="loanmanager_prestamo_view_tree" model="ir.ui.view">
+        <field name="name">loanmanager.prestamo.view.tree</field>
+        <field name="model">loanmanager.prestamo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="monto_prestado"/>
+                <field name="fecha"/>
+                <field name="cliente_id"/>
+                <field name="saldo"/>
+                <!--<field name="estado"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="loanmanager_prestamo_view_form" model="ir.ui.view">
+        <field name="name">loanmanager.prestamo.view.form</field>
+        <field name="model">loanmanager.prestamo</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_set_cobro" type="object" string="Realizar Cobro"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="cliente_id"/>
+                        </group>
+                        <group>
+                            <field name="monto_prestado"/>
+                            <field name="fecha"/>
+                            <!--<field name="estado"/>-->
+                            <field name="saldo"/>
+                        </group>
+                    </group>
+                    <!--<label for="cobro_ids"/>-->
+                    <notebook>
+                        <page string="Cobros" readonly="1">
+                            <field name="cobro_ids" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="fecha"/>
+                                    <field name="importe"/>
+                                    <field name="prestamo_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="loanmanager_prestamo_action" model="ir.actions.act_window">
+        <field name="name">Prestamos</field>
+        <field name="res_model">loanmanager.prestamo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="loanmanager_prestamo_view_tree"/>
+    </record>
+    <menuitem id="prestamo_menu"
+              name="Registrar Préstamo"
+              action="loanmanager_prestamo_action"
+              sequence="20"
+              parent="loanmanager_menu_root"/>
+
+    <record id="loanmanager_cobros_view_form_wizard" model="ir.ui.view">
+        <field name="name">loanmanager.cobros.view.form.wizard</field>
+        <field name="model">loanmanager.cobros</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" invisible="1"/>
+                            <field name="fecha"/>
+                        </group>
+                        <group>
+                            <field name="importe"/>
+                            <!--<field name="prestamo_id"/>-->
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_guardar" type="object" class="btn btn-primary" string="Mi guardar"/>
+                    <button string="Descartar" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loanmanager_cliente,access_loanmanager_cliente,model_loanmanager_cliente,base.group_user,1,1,1,1
+access_loanmanager_cobros,access_loanmanager_cobros,model_loanmanager_cobros,base.group_user,1,1,1,1
+access_loanmanager_prestamo,access_loanmanager_prestamo,model_loanmanager_prestamo,base.group_user,1,1,1,1

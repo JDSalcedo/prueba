@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <menuitem id="loanmanager_menu_root"
+              name="Prestamo"
+              sequence="50"/>
+</odoo>
