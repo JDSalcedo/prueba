@@ -21,7 +21,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_set_cobro" type="object" string="Realizar Cobro"/>
+                    <button name="action_set_cobro" type="object" string="Realizar Cobro" class="btn btn-primary"
+                            attrs="{'invisible': [('estado', '=', 'paid')]}"/>
+                    <field name="estado" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>

@@ -1,5 +1,11 @@
 from odoo import api, fields, models
 
+
+STATE_SELECTION = [
+    ('owe', 'debiendo'),
+    ('paid', 'pagado')
+]
+
 class Prestamo(models.Model):
     _name = 'loanmanager.prestamo'
     _description = 'Tabla de préstamos'
@@ -10,7 +16,7 @@ class Prestamo(models.Model):
     cliente_id = fields.Many2one('loanmanager.cliente', string='Cliente')
     cobro_ids = fields.One2many('loanmanager.cobros', 'prestamo_id', string='Cobros')
     saldo = fields.Float(string="Saldo")
-    estado = fields.Selection([('owe', 'debiendo'), ('paid', 'pagado')], string='Estado')
+    estado = fields.Selection(STATE_SELECTION, string='Estado', default='owe')
 
 
 
