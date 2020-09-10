@@ -6,7 +6,7 @@
      venta de Bicicletas""",
     'category': 'Sale',
     'website': 'https://www.vendobicicletas.com',
-    'depends' : ['base'],
+    'depends' : ['account'],
     'data': [
         # Data
         'data/ir_sequence_data.xml',

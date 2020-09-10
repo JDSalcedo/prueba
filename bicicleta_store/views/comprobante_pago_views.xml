@@ -39,6 +39,7 @@
                         <group>
                             <field name="fecha_emision"/>
                             <field name="termino_pago_id"/>
+                            <field name="payment_term_id"/>
                             <field name="fecha_vencimiento"/>
                             <field name="tipo"/>
                             <field name="moneda"/>

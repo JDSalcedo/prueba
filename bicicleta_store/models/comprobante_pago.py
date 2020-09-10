@@ -43,6 +43,7 @@ class ComprobantePagoCliente(models.Model):
     tipo = fields.Selection([('factura', 'Factura'), ('boleta', 'Boleta')], string='Tipo comprobante')
     termino_pago = fields.Selection(TERMINO_PAGO_SELECTION, string='Plazo pago')
     termino_pago_id = fields.Many2one('termino.pago', string='Plazo pago')
+    payment_term_id = fields.Many2one('account.payment.term', string='Términos de pago')
     moneda = fields.Selection([('pen', 'Soles'), ('usd', 'Dólares')], string='Moneda')
     total = fields.Float(string='Total')
     saldo = fields.Float(string='Saldo')
