@@ -7,32 +7,26 @@ class Cobros(models.Model):
     _description = 'Tabla de cobros'
 
     name = fields.Char(string='Serie del cobro', default='/')
-    fecha = fields.Date(string='Fecha', default=fields.Date.context_today)
-    importe = fields.Float(string='Importe')
+    nombre_cliente = fields.Char(string='Nombre del Cliente', compute='_compute_nombre_cliente')
+    fecha = fields.Date(string='Fecha', default=fields.Date.context_today, readonly=True)
+    importe = fields.Float(string='Importe', required=True)
     prestamo_id = fields.Many2one('loanmanager.prestamo', string='Prestamo')
 
-    @api.onchange('importe')
-    def _onchange_importe(self):
-        if self.importe > self.prestamo_id.saldo:
-            raise UserError('No puede pagar más que el saldo')
-
+    @api.depends('prestamo_id')
+    def _compute_nombre_cliente(self):
+        self.nombre_cliente = '{} {}'.format(self.prestamo_id.cliente_id.name, self.prestamo_id.cliente_id.apellido)
 
     @api.model
     def create(self, values):
-
-        prestamo_id = values.get('prestamo_id')
-        obj = self.env['loanmanager.prestamo'].browse([prestamo_id])
-        saldo_final = obj.saldo - self.importe
-
-
+        values['name'] = self.env['ir.sequence'].next_by_code('comprobantecobro.cliente', sequence_date=None) or '/'
+        pres_id = self.env['loanmanager.prestamo'].browse([values.get('prestamo_id')])
+        if values.get('importe') > pres_id.saldo:
+            raise UserError('No puede pagar más que el saldo')
+        pres_id.saldo = pres_id.saldo - values.get('importe')
+        if pres_id.saldo == 0:
+            pres_id.estado = 'paid'
         return super(Cobros, self).create(values)
 
     def action_guardar(self):
         self.ensure_one()
-        self.name = self.env['ir.sequence'].next_by_code('comprobantecobro.cliente', sequence_date=None) or '/'
-        # saldo_final = self.prestamo_id.saldo - self.importe
-        # valores = {'saldo': saldo_final}
-        # if saldo_final == 0:
-        #     valores['estado'] = 'paid'
-        # self.prestamo_id.write(valores)
         return True
