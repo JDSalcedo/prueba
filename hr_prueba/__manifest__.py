@@ -1,5 +1,5 @@
 {
-    'name' : 'Recursos Humanos',
+    'name': 'Recursos Humanos',
     'version': '0.0.1',
     'summary': 'Módulo para agregar caracteristicas del empleado',
     'description': """Módulo para agregar caracteristicas del empleado""",
@@ -7,6 +7,7 @@
     'website': 'https://www.empleadosattributes.com',
     'depends': ['hr'],
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_employee_views.xml',
     ],
     'installable': True,
