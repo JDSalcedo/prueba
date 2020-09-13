@@ -23,5 +23,3 @@ class HrEmployeePrivate(models.Model):
                 'default_empleado_id': self.id
             }
         }
-
-

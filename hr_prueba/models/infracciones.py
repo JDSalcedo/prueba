@@ -9,11 +9,3 @@ class Infracciones(models.Model):
     puntuacion = fields.Integer(string='Puntuacióm')
     descripcion = fields.Text(string='Descripción', required=True)
     empleado_id = fields.Many2one('hr.employee', string='Empleado')
-
-    @api.model
-    def create(self, values):
-        return super(Infracciones, self).create(values)
-
-    def action_guardar(self):
-        self.ensure_one()
-        return True

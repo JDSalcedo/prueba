@@ -49,10 +49,6 @@
                     </group>
                 </group>
             </sheet>
-            <footer>
-                <button name="action_guardar" type="object" class="btn btn-primary" string="Mi guardar"/>
-                <button string="Descartar" class="btn btn-secondary" special="cancel"/>
-            </footer>
         </form>
     </field>
     </record>
