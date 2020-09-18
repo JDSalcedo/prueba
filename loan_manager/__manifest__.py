@@ -11,7 +11,7 @@
         # Data
         'data/ir_sequence_data.xml',
 
-        # Archivo de reglas de acceso
+        'security/loanmanager_groups.xml',
         #'security/ir.model.access.csv',
         'security/ir.model.access.csv',
 

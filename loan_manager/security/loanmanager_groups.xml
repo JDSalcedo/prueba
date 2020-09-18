@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Categoría loan_manager-->
+    <record id="module_category_loan_manager" model="ir.module.category">
+        <field name="name">Gestor de péstamos</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- Grupos -->
+    <record id="loan_manager_group_jefe" model="res.groups">
+        <field name="name">Jefe</field>
+        <field name="category_id" ref="module_category_loan_manager"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="loan_manager_group_usuario" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="module_category_loan_manager"/>
+        <field name="implied_ids" eval="[(4, ref('loan_manager_group_jefe'))]"/>
+    </record>
+    <record id="loan_manager_group_gerente" model="res.groups">
+        <field name="name">Gerente</field>
+        <field name="category_id" ref="module_category_loan_manager"/>
+        <field name="implied_ids" eval="[(4, ref('loan_manager_group_usuario'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin')),(4, ref('base.user_root'))]"/>
+    </record>
+</odoo>
