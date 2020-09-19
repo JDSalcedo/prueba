@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="0">
+    <record id="loanmanager_prestamo_rule_usuario" model="ir.rule">
+        <field name="name">Préstamos por Sedes Permitidas</field>
+        <field name="model_id" ref="model_loanmanager_prestamo"/>
+        <field name="groups" eval="[(4, ref('loan_manager_group_usuario'))]"/>
+        <field name="domain_force">[('sede_id.user_ids', 'in', user.id)]</field>
+    </record>
+    <record id="loanmanager_prestamo_rule_jefe" model="ir.rule">
+        <field name="name">Todos los préstamos permitido por sedes</field>
+        <field name="model_id" ref="model_loanmanager_prestamo"/>
+        <field name="groups" eval="[(4, ref('loan_manager_group_jefe'))]"/>
+        <field name="domain_force">[('sede_id.user_ids', 'in', user.id)]</field>
+    </record>
+    <record id="loanmanager_prestamo_rule_gerente" model="ir.rule">
+        <field name="name">Todos los préstamos </field>
+        <field name="model_id" ref="model_loanmanager_prestamo"/>
+        <field name="groups" eval="[(4, ref('loan_manager_group_gerente'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+</odoo>

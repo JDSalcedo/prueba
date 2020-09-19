@@ -20,6 +20,7 @@ class Prestamo(models.Model):
     cobro_ids = fields.One2many('loanmanager.cobros', 'prestamo_id', string='Cobros')
     saldo = fields.Float(string="Saldo", readonly=True)
     estado = fields.Selection(STATE_SELECTION, string='Estado', default='draft')
+    sede_id = fields.Many2one('res.sede', string='Sede')
 
     def action_set_cobro(self):
         self.ensure_one()

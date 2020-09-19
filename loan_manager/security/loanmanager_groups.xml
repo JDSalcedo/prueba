@@ -7,20 +7,20 @@
     </record>
 
     <!-- Grupos -->
-    <record id="loan_manager_group_jefe" model="res.groups">
-        <field name="name">Jefe</field>
-        <field name="category_id" ref="module_category_loan_manager"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-    </record>
     <record id="loan_manager_group_usuario" model="res.groups">
         <field name="name">Usuario</field>
         <field name="category_id" ref="module_category_loan_manager"/>
-        <field name="implied_ids" eval="[(4, ref('loan_manager_group_jefe'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="loan_manager_group_jefe" model="res.groups">
+        <field name="name">Jefe</field>
+        <field name="category_id" ref="module_category_loan_manager"/>
+        <field name="implied_ids" eval="[(4, ref('loan_manager_group_usuario'))]"/>
     </record>
     <record id="loan_manager_group_gerente" model="res.groups">
         <field name="name">Gerente</field>
         <field name="category_id" ref="module_category_loan_manager"/>
-        <field name="implied_ids" eval="[(4, ref('loan_manager_group_usuario'))]"/>
+        <field name="implied_ids" eval="[(4, ref('loan_manager_group_jefe'))]"/>
         <field name="users" eval="[(4, ref('base.user_admin')),(4, ref('base.user_root'))]"/>
     </record>
 </odoo>

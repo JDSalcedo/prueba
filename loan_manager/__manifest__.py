@@ -12,13 +12,14 @@
         'data/ir_sequence_data.xml',
 
         'security/loanmanager_groups.xml',
-        #'security/ir.model.access.csv',
+        'security/loanmanager_prestamo_security.xml',
         'security/ir.model.access.csv',
 
         # Vistas
         'views/loan_manager_menus.xml',
+        'views/res_users_views.xml',
+        'views/sede_views.xml',
         'views/cliente_views.xml',
-        #'views/cobro_views.xml',
         'views/prestamo_views.xml',
     ],
     'installable': True,

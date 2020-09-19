@@ -1,8 +1,18 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loanmanager_cliente_super,Cliente usuario super,model_loanmanager_cliente,loan_manager_group_usuario,1,0,1,0
+access_loanmanager_cobros_super,Cobros usuario super,model_loanmanager_cobros,loan_manager_group_usuario,1,0,1,0
+access_loanmanager_prestamo_super,prestamo usuario super,model_loanmanager_prestamo,loan_manager_group_usuario,1,0,1,0
+access_res_sede_super,sede usuario super,model_res_sede,loan_manager_group_usuario,1,0,0,0
+
 access_loanmanager_cliente,access_loanmanager_cliente,model_loanmanager_cliente,loan_manager_group_jefe,1,1,1,0
-access_loanmanager_cliente,access_loanmanager_cliente,model_loanmanager_cliente,loan_manager_group_usuario,1,1,1,1
-access_loanmanager_cobros,access_loanmanager_cobros,model_loanmanager_cobros,loan_manager_group_usuario,1,1,1,1
 access_loanmanager_cobros,access_loanmanager_cobros,model_loanmanager_cobros,loan_manager_group_jefe,1,1,1,0
-access_loanmanager_prestamo,access_loanmanager_prestamo,model_loanmanager_prestamo,loan_manager_group_usuario,1,1,1,1
 access_loanmanager_prestamo,access_loanmanager_prestamo,model_loanmanager_prestamo,loan_manager_group_jefe,1,1,1,0
+access_res_sede,access_res_sede,model_res_sede,loan_manager_group_jefe,1,0,0,0
+
+access_loanmanager_cliente_admin,Cliente gerente admin,model_loanmanager_cliente,loan_manager_group_gerente,1,1,1,1
+access_loanmanager_cobros_admin,Cobros gerente admin,model_loanmanager_cobros,loan_manager_group_gerente,1,1,1,1
+access_loanmanager_prestamo_admin,Prestamo gerente admin,model_loanmanager_prestamo,loan_manager_group_gerente,1,1,1,1
+access_res_sede_admin,Sede gerente admin,model_res_sede,loan_manager_group_jefe,1,1,1,1
+
+
 

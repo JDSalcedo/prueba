@@ -9,5 +9,5 @@ class Sede(models.Model):
         'res.users',
         'res_sede_res_users_rel',
         'sede_id', 'user_id',
-        string='Sedes'
+        string='Usuarios'
     )

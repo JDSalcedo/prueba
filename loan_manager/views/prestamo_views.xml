@@ -11,6 +11,7 @@
                 <field name="cliente_id"/>
                 <field name="saldo"/>
                 <field name="estado"/>
+                <field name="sede_id"/>
             </tree>
         </field>
     </record>
@@ -38,6 +39,7 @@
                             <field name="monto_prestado" attrs="{'readonly': [('estado', '!=', 'draft')]}"/>
                             <!--<field name="estado"/>-->
                             <field name="saldo" force_save="1"/>
+                            <field name="sede_id"/>
                         </group>
                     </group>
                     <!--<label for="cobro_ids"/>-->
